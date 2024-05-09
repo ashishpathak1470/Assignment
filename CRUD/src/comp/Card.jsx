@@ -1,15 +1,9 @@
 import React from "react";
-
-function Card({name, imgadd} ) {
-
-
+import { Link } from "react-router-dom";
+function Card({ name, imgadd }) {
   return (
-    <div className="w-[300px] rounded-md border border-orange-500 ">
-      <img
-      src={imgadd}
-        alt="Person"
-        className="rounded-t-md object-cover"
-      />
+    <div className="w-[300px] rounded-md border border-orange-500 shadow-2xl">
+      <img src={imgadd} alt="Person" className="rounded-t-md object-cover" />
       <div className="p-4">
         <button
           type="button"
@@ -17,6 +11,7 @@ function Card({name, imgadd} ) {
         >
           {name}
         </button>
+        
       </div>
     </div>
   );
