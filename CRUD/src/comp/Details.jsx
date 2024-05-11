@@ -1,30 +1,43 @@
-import React, { useState } from "react";
-
+import React, { useEffect, useState } from "react";
+import { dummydata } from "../dummy_data";
 function Details() {
-  const [data, setData] = useState([]);
 
-  // Function to delete data by index
-  const handleDelete = (index) => {
-    setData((prevData) => prevData.filter((_, i) => i !== index));
-  };
+  const [data, setData] = useState([])
 
-  // Function to update data by index
-  const handleUpdate = (index, updatedData) => {
-    setData((prevData) => prevData.map((item, i) => (i === index ? updatedData : item)));
-  };
+  useEffect(()=>{
+    setData(dummydata)
+  },[])
 
+  
   return (
-    <div>
-      {data.map((item, index) => (
-        <div key={index}>
-          <p>Name: {item.name}</p>
-          <p>Email: {item.email}</p>
-          <p>Phone Number: {item.phoneNumber}</p>
-          <p>Date of Birth: {item.dob}</p>
-          <button onClick={() => handleUpdate(index, { ...item, name: "Updated Name" })}>Update</button>
-          <button onClick={() => handleDelete(index)}>Delete</button>
-        </div>
-      ))}
+    <div className="h-screen flex items-center justify-center md:justify-center text-white mx-20" >
+      <table className="min-w-full text-left text-sm font-light">
+        <thead className="border-b font-medium dark:border-neutral-500">
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Date of Birth</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((item) => (
+            <tr className="border-b dark:border-neutral-500">
+              <td>{item.Name}</td>
+              <td>{item.Email}</td>
+              <td>{item.PhoneNumber}</td>
+              <td>{item.Dob}</td>
+              <td>
+                <div className="flex">
+                <button className="bg-orange-500 rounded-2xl w-20 h-7 shadow-2xl flex items-center justify-center flex-col hover:bg-orange-700">Update</button>&nbsp;
+                <button className="bg-orange-500 rounded-2xl w-20 h-7 shadow-2xl flex items-center justify-center flex-col hover:bg-orange-700">Delete</button>
+                </div>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }

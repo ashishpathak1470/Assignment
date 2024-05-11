@@ -2,11 +2,9 @@ import React from "react";
 
 function Footer() {
   return (
-    <footer class="rounded-2xl shadow-xl ">
-      <div class="bg-orange-500 w-full h-10 rounded-2xl shadow-2xl">
-        <h1 className="font-bold text-xl text-white">Assignment by Ashish Pathak</h1>
-      </div>
-    </footer>
+    <div className="bg-orange-500 w-full h-14 shadow-2xl flex items-center justify-center">
+      <h1 className="font-bold text-2xl text-white">Assignment by Ashish Pathak</h1>
+    </div>
   );
 }
 
