@@ -40,9 +40,9 @@ function Details() {
   };
 
   return (
-    <div className="h-screen flex items-center justify-center md:justify-center text-white mx-20">
+    <div className="h-screen flex items-center justify-center md:justify-center text-white mx-20 ">
       {data.length > 0 ? (
-        <table className="min-w-full text-left text-sm font-light">
+        <table className="min-w-full text-left text-sm font-light shadow-2xl">
           <thead className="border-b font-medium dark:border-neutral-500">
             <tr>
               <th>Sr. No.</th>
