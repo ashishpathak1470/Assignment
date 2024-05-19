@@ -45,7 +45,6 @@ function Details() {
         <table className="min-w-full text-left text-sm font-light shadow-2xl">
           <thead className="border-b font-medium dark:border-neutral-500">
             <tr>
-              <th>Sr. No.</th>
               <th>Name</th>
               <th>Email</th>
               <th>Phone Number</th>
@@ -56,7 +55,6 @@ function Details() {
           <tbody>
             {data.map((item) => (
               <tr className="border-b dark:border-neutral-500" key={item.id}>
-                <td>{item.id}</td>
                 <td>{item.name}</td>
                 <td>{item.email}</td>
                 <td>{item.phoneNumber}</td>

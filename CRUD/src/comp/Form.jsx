@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from './ParentComponent';
+import axios from 'axios';
 
 function Form() {
   const {
@@ -17,22 +18,33 @@ function Form() {
   } = useContext(UserContext);
   const navigate = useNavigate();
 
-  const handleCreate = (e) => {
+  const handleCreate = async (e) => {
     e.preventDefault();
-    const newEntry = { id:data.length+1, name, email, phoneNumber, dob };
-    addFormData(newEntry);
-    navigate('/detail');
+    const newEntry = { name, email, phoneNumber, dob };
+
+    try {
+      const response = await axios.post('http://localhost:5001/api/create', newEntry);
+      newEntry.id = response.data.userId; // Set the ID returned from the server
+      addFormData(newEntry);
+      navigate('/detail');
+    } catch (error) {
+      console.error('Error creating data:', error);
+    }
   };
 
-  const handleUpdate = (e) => {
+  const handleUpdate = async (e) => {
     e.preventDefault();
     const updatedEntry = { id, name, email, phoneNumber, dob };
-    updateFormData(updatedEntry);
-    setIsUpdate(false);
-    navigate('/detail');
-    setIsUpdate(false);
-  };
 
+    try {
+      await axios.put(`http://localhost:5001/api/update/${id}`, updatedEntry);
+      updateFormData(updatedEntry);
+      setIsUpdate(false);
+      navigate('/detail');
+    } catch (error) {
+      console.error('Error updating data:', error);
+    }
+  };
 
   return (
     <div className="h-screen flex items-center flex-col justify-center md:justify-center text-white">
